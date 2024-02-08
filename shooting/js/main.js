@@ -328,7 +328,14 @@ var Player = Class.create( Sprite, {
             if ( Math.abs( pad.vx ) < 0.5 ) {
                 if ( this.age%8 < 4 ) this.frame = 0;
                 else this.frame = 1;
-            } else this.frame = this.age%2+2;
+            }else if(this.age%8 < 4){
+                this.frame = 2;
+                this.y = this.y + 0.5;
+            }else {
+                this.frame = 3;
+                this.y = this.y - 0.5;
+            }
+            //this.frame = this.age%2+2;
 
             /**キャラが横に移動した時、キャラ画像をX方向に反転**/
             if ( pad.vx < 0 ) this.scaleX = -1;
